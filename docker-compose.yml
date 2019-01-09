@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_volume:/var/lib/postgresql
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/adventext/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./webclient
+    command: ["npm", "start"]
+    volumes:
+      - ./webclient:/adventext/webclient
+    ports:
+      - "3000:3000"
+
+volumes:
+  db_volume: {}
