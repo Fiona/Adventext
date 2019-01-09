@@ -17,13 +17,14 @@ services:
     depends_on:
       - db
 
-  frontend:
+  webclient:
     build: ./webclient
     command: ["npm", "start"]
     volumes:
       - ./webclient:/adventext/webclient
     ports:
       - "3000:3000"
+      - "35729:35729"
 
 volumes:
   db_volume: {}
