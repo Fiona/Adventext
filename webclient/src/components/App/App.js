@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Router from './Router';
+import Authentication from './Authentication';
 
 const Page = styled.section`
   font-size: 1.5em;
@@ -10,11 +11,12 @@ const Page = styled.section`
 function App()
 {
     return (
-      <Page>
-          <header className="App-header">
-          </header>
-          <Router />
-      </Page>
+        <Page>
+            <Authentication />
+            <header className="App-header">
+            </header>
+            <Router />
+        </Page>
     );
 }
 
